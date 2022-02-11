@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/grcp-client/grcp-client.iml" filepath="$PROJECT_DIR$/grcp-client/grcp-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/grcp-server/grcp-server.iml" filepath="$PROJECT_DIR$/grcp-server/grcp-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/grpc-interface/grpc-interface.iml" filepath="$PROJECT_DIR$/grpc-interface/grpc-interface.iml" />
+    </modules>
+  </component>
+</project>
