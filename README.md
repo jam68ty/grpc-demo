@@ -7,6 +7,6 @@ mvn spring-boot:run
 ```
 ## call api
 ```
-grpcurl --plaintext localhost:9090 list
+grpcurl --plaintext localhost:9099 list
 grpcurl -plaintext -d {\"name\":\"a~\"} localhost:9099 com.shoalter.grpc.MyService/SayHello
 ```
