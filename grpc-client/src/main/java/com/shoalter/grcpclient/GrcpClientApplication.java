@@ -19,9 +19,11 @@ public class GrcpClientApplication {
 		SpringApplication.run(GrcpClientApplication.class, args);
 	}
 
-//	@PostConstruct
-//	public void doStuff() {
-//		// the service will have been initialized and wired into the field by now
-//		grpcClientService.receiveGreeting("hi?");
-//	}
+	@PostConstruct
+	public void doStuff() throws InterruptedException {
+		// the service will have been initialized and wired into the field by now
+		grpcClientService.serverSideStreamingGetStock();
+		grpcClientService.clientSideStreamingGetStatisticsOfStocks();
+		grpcClientService.bidirectionalStreamingGetListsStockQuotes();
+	}
 }
