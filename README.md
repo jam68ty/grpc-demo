@@ -21,3 +21,25 @@
 - Cassandra在java內的操作 (JPA or client)
 - Quartz 基本操作 (cluster, Job Stores)
 - schema設計
+
+## Git commit
+
+### branch format
+
+``` text
+feat/CodeStyle
+```
+
+### commit type
+
+[參考](https://wadehuanglearning.blogspot.com/2019/05/commit-commit-commit-why-what-commit.html)
+
+- feat
+- fix
+- refactor
+
+``` text
+feat: 新增spring quartz 設定
+1. add dependency in Pom file
+...
+```
