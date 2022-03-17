@@ -1,5 +1,7 @@
 package com.shoalter.grpcserver.enitity;
 
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+
 import javax.persistence.*;
 
 @Entity

@@ -6,13 +6,17 @@ option java_package = "com.shoalter.grpc";
 
 service StockService {
   rpc unaryGetStock(StockRequest) returns (StockResponse) {}
-  rpc serverSideStreamingGetStock(StockRequest) returns (stream StockResponse) {}
-  rpc clientSideStreamingGetStatisticsOfStocks (stream StockRequest) returns (StockResponse) {}
-  rpc bidirectionalStreamingGetListOfStocks(stream StockRequest) returns (StockResponse) {}
+  rpc serverSideStreamingGetStock(StockProductNameRequest) returns (stream StockResponse) {}
+  rpc clientSideStreamingGetStatisticsOfStocks (stream StockRequest) returns (StockStatisticsResponse) {}
+  rpc bidirectionalStreamingGetListOfStocks(stream StockProductNameRequest) returns (stream StockResponse) {}
 }
 
 message StockRequest {
   int32 id = 1;
+}
+
+message StockProductNameRequest {
+  string prefix = 1;
 }
 
 message StockResponse {
@@ -20,4 +24,8 @@ message StockResponse {
   string productName = 2;
   double price = 3;
   int32 offerNumber = 4;
+}
+
+message StockStatisticsResponse{
+  int32 totalValue = 1;
 }
