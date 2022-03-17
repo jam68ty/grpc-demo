@@ -20,9 +20,9 @@ public class GrpcStockClientService {
 
     Logger logger = LoggerFactory.getLogger(GrpcStockClientService.class);
 
-    public void unaryGetStock() {
-        StockRequest request = StockRequest.newBuilder().setId(1).build();
-        StockResponse response;
+    public StockResponse unaryGetStock(int id) {
+        StockRequest request = StockRequest.newBuilder().setId(id).build();
+        StockResponse response = StockResponse.newBuilder().build();
         try {
             logger.info("[unaryGetStock] - server return a response ... ");
             response = stockServiceBlockingStub.unaryGetStock(request);
@@ -31,10 +31,12 @@ public class GrpcStockClientService {
                     response.getProductName(),
                     response.getPrice(),
                     response.getPrice());
+            return response;
         } catch (StatusRuntimeException e) {
             logger.error("[unaryGetStock] - RPC failed: {}", String.valueOf(e));
         }
         logger.info("[unaryGetStock] - Finished!");
+        return response;
     }
 
     public void serverSideStreamingGetStock() {

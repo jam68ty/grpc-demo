@@ -21,7 +21,7 @@ public class GrpcClientApplication {
     @PostConstruct
     public void doStuff() throws InterruptedException {
         // the service will have been initialized and wired into the field by now
-        service.unaryGetStock();
+        service.unaryGetStock(1);
         Thread.sleep(200);
         service.serverSideStreamingGetStock();
         Thread.sleep(200);
