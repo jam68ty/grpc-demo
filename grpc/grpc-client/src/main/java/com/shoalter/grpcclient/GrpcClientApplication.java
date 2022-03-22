@@ -23,7 +23,7 @@ public class GrpcClientApplication {
         // the service will have been initialized and wired into the field by now
         service.unaryGetStock(1);
         Thread.sleep(200);
-        service.serverSideStreamingGetStock();
+        service.serverSideStreamingGetStock("p");
         Thread.sleep(200);
         service.clientSideStreamingGetStatisticsOfStocks();
         Thread.sleep(200);

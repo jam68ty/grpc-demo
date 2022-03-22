@@ -31,16 +31,16 @@ public class GrpcStockClientService {
                     response.getProductName(),
                     response.getPrice(),
                     response.getPrice());
+            logger.info("[unaryGetStock] - Finished!");
             return response;
         } catch (StatusRuntimeException e) {
             logger.error("[unaryGetStock] - RPC failed: {}", String.valueOf(e));
         }
-        logger.info("[unaryGetStock] - Finished!");
         return response;
     }
 
-    public void serverSideStreamingGetStock() {
-        StockProductNameRequest request = StockProductNameRequest.newBuilder().setPrefix("p").build();
+    public void serverSideStreamingGetStock(String prefix) {
+        StockProductNameRequest request = StockProductNameRequest.newBuilder().setPrefix(prefix).build();
         Iterator<StockResponse> stockResponses;
         try {
             logger.info("[serverSideStreamingGetStock] - server return streaming response ... ");

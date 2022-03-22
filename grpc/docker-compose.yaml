@@ -1,0 +1,45 @@
+version: "3.7"
+
+services:
+
+  mysql:
+    container_name: mysql
+    image: mysql/mysql-server:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: test
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 123456
+      MYSQL_ROOT_PASSWORD: 123456
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./sqls:/docker-entrypoint-initdb.d
+
+  server:
+    image: docker-image-grpc-server
+    container_name: grpc-server
+    build:
+      context: ./grpc-server/
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+      - "9099:9099"
+    depends_on:
+      - mysql
+
+  web:
+    container_name: grpc-client
+    build:
+      context: ./grpc-client/
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    depends_on:
+      - server
+
+  zipkin:
+    image: openzipkin/zipkin
+    container_name: zipkin
+    ports:
+      - "9411:9411"
